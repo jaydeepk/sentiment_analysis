@@ -1,8 +1,21 @@
-# IMDB Sentiment Analysis with Simple Neural Network
+# IMDB Sentiment Analysis with a simple neural network
 
 ## Project Overview
 
 This project implements a sentiment analysis model using a simple neural network trained on the IMDB movie review dataset. It demonstrates the process of loading and preprocessing text data, building a basic neural network model, and training it for binary sentiment classification (positive/negative reviews).
+
+## Model Architecture
+
+The sentiment analysis model uses a simple feed-forward neural network with the following structure:
+
+![Simple Neural Network Architecture](assets/simple_nn_architecture.svg)
+
+1. Input Layer: Accepts tokenized text input
+2. Embedding Layer: Converts tokens to dense vector representations
+3. Hidden Layer 1: Fully connected layer with ReLU activation
+4. Dropout: Applies dropout for regularization
+5. Hidden Layer 2: Fully connected layer with ReLU activation
+6. Output Layer: Produces the final sentiment prediction
 
 ## Features
 
