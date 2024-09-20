@@ -3,3 +3,5 @@ __pycache__
 data
 .vector_cache
 venv
+training_data/README.md
+training_history.png
