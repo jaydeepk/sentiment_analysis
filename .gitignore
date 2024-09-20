@@ -1,0 +1,5 @@
+__pycache__
+*.pyc
+data
+.vector_cache
+venv
