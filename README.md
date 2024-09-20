@@ -28,8 +28,7 @@ The sentiment analysis model uses a simple feed-forward neural network with the 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/sentiment-analysis-project.git
-   cd sentiment-analysis-project
+   git clone https://github.com/yourusername/sentiment-analysis.git
    ```
 
 2. Create a virtual environment (optional but recommended):
