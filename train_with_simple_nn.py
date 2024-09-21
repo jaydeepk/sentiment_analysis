@@ -25,7 +25,7 @@ def run(args: ArgumentParser) -> None:
     model = SimpleNN(imdb.get_vocab_size(), args.embedding_dim, args.hidden_dim, 1, dropout_rate=args.dropout_rate).to(device)
     
     criterion = nn.BCEWithLogitsLoss()
-    optimizer = Adam(model.parameters(), lr=args.learning_rate)
+    optimizer = Adam(model.parameters(), lr=args.learning_rate, weight_decay=1e-5)
     scheduler = ReduceLROnPlateau(optimizer, 'min', patience=3, factor=0.5, verbose=True)
 
     trainer = Trainer(model, criterion, optimizer, scheduler, train_loader, val_loader, patience=args.patience)

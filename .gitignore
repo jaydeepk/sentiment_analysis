@@ -4,4 +4,5 @@ data
 .vector_cache
 venv
 training_data/README.md
+best_model.pth
 training_history.png
