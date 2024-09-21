@@ -1,8 +1,13 @@
 import torch
+from torch.optim import Optimizer
+from torch.optim.lr_scheduler import _LRScheduler
+from torch.utils.data import DataLoader
+from typing import List, Tuple
 import matplotlib.pyplot as plt
 
 class Trainer:
-    def __init__(self, model, criterion, optimizer, scheduler, train_loader, val_loader, patience=5):
+    def __init__(self, model: torch.nn.Module, criterion: torch.nn.Module, optimizer: Optimizer, 
+                 scheduler: _LRScheduler, train_loader: DataLoader, val_loader: DataLoader, patience: int = 5):
         self.model = model
         self.criterion = criterion
         self.optimizer = optimizer
@@ -15,7 +20,7 @@ class Trainer:
         self.train_accuracies = []
         self.val_accuracies = []
 
-    def run(self):
+    def run(self) -> None:
         best_val_loss = float('inf')
         epochs_without_improvement = 0
 
@@ -45,7 +50,7 @@ class Trainer:
         
         self.plot_training_history()
 
-    def train_epoch(self):
+    def train_epoch(self) -> Tuple[float, float]:
         self.model.train()
         total_loss = 0
         correct = 0
@@ -64,10 +69,10 @@ class Trainer:
             correct += (predicted == labels).sum().item()
         return total_loss / len(self.train_loader), 100 * correct / total
 
-    def validate_epoch(self):
+    def validate_epoch(self) -> Tuple[float, float]:
         return self.calculate_loss_and_accuracy(self.val_loader)
 
-    def calculate_loss_and_accuracy(self, data_loader):
+    def calculate_loss_and_accuracy(self, data_loader: DataLoader) -> Tuple[float, float]:
         self.model.eval()
         total_loss = 0
         correct = 0
@@ -84,7 +89,7 @@ class Trainer:
                 correct += (predicted == labels).sum().item()
         return total_loss / len(data_loader), 100 * correct / total
 
-    def plot_training_history(self):
+    def plot_training_history(self) -> None:
         plt.figure(figsize=(12, 4))
         plt.subplot(1, 2, 1)
         plt.plot(self.train_losses, label='Train Loss')
